@@ -1,13 +1,26 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { Tabs } from 'expo-router'
-import { Color } from 'react-native/types_generated/Libraries/Animated/AnimatedExports'
 import { Ionicons } from '@expo/vector-icons'
 
 const _layout = () => {
   return (
     <Tabs
-      screenOptions={{}}
+      screenOptions={{
+        tabBarActiveTintColor: 'tomato',
+        tabBarInactiveTintColor: 'gray',
+        tabBarStyle: {
+          backgroundColor: '#1e293b',
+          borderTopWidth: 1,
+          borderTopColor: "gray",
+          height: 72,
+          paddingTop: 10
+        },
+        tabBarLabelStyle: {
+          fontSize: 15,
+          fontWeight: "600"
+        },
+        headerShown: false
+      }}
     >
       <Tabs.Screen name="index" options={{
         title: 'Todos',
