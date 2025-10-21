@@ -1,44 +1,48 @@
-import React from 'react'
-import { Tabs } from 'expo-router'
-import { Ionicons } from '@expo/vector-icons'
+import useTheme from "@/hooks/useTheme";
+import { Ionicons } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
 
-const _layout = () => {
+const TabsLayout = () => {
+  const { colors } = useTheme();
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.textMuted,
         tabBarStyle: {
-          backgroundColor: '#1e293b',
+          backgroundColor: colors.surface,
           borderTopWidth: 1,
-          borderTopColor: "gray",
-          height: 72,
-          paddingTop: 10
+          borderTopColor: colors.border,
+          height: 90,
+          // paddingBottom: 30,
+          paddingTop: 10,
         },
         tabBarLabelStyle: {
-          fontSize: 15,
-          fontWeight: "600"
+          fontSize: 12,
+          fontWeight: "600",
         },
-        headerShown: false
+        headerShown: false,
       }}
     >
-      <Tabs.Screen name="index" options={{
-        title: 'Todos',
-        tabBarIcon:({color, size}) => (
-          <Ionicons name='flash-outline' color={color} size={size} />
-        )
-      }} />
-      
-      <Tabs.Screen name="settings" options={{
-        title: 'Settings',
-        tabBarIcon:({color, size}) => (
-          <Ionicons name='settings' color={color} size={size} />
-        )
-      }} />
-      
-
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: "Todos",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="flash-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: "Settings",
+          tabBarIcon: ({ color, size }) => <Ionicons name="settings" size={size} color={color} />,
+        }}
+      />
     </Tabs>
-  )
-}
+  );
+};
 
-export default _layout
+export default TabsLayout;
